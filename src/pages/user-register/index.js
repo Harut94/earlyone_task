@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { ErrorMessage } from '@hookform/error-message';
 //selectors
 import { userSelector } from '../../reducers/user'
 //components
@@ -25,9 +26,7 @@ const UserRegister = () => {
         education: yup.string().required('this field is required'),
         image: yup
             .mixed()
-            .test("type", "We only support jpeg", (value) => {
-                return value && value[0] && (value[0].type === "image/jpeg" || value[0].type === "image/png");
-            }),
+            .required('this field is required'),
     });
 
     const { register, errors, handleSubmit, isSubmitting, getValues, reset } = useForm({
@@ -78,6 +77,7 @@ const UserRegister = () => {
                                 type="file"
                                 className={'fileUpload'}
                                 handleChange={onImageChange}
+                                accept={'image/png, image/jpeg'}
                             />}
                         <Input
                             name="name"

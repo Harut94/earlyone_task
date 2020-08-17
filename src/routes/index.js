@@ -12,7 +12,7 @@ import PrivateRoute from '../components/privateRoute'
 const RouterComponent = () => {
     return (
         <div>
-            <Header/>
+            <Header />
             <Switch>
                 <Redirect exact from="/" to="/user-register" component={UserRegister} />
                 <Route exact path="/user-register" component={UserRegister} />
