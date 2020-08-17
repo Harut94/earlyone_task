@@ -4,7 +4,6 @@ import { yupResolver } from '@hookform/resolvers';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { ErrorMessage } from '@hookform/error-message';
 //selectors
 import { userSelector } from '../../reducers/user'
 //components
@@ -29,7 +28,7 @@ const UserRegister = () => {
             .required('this field is required'),
     });
 
-    const { register, errors, handleSubmit, isSubmitting, getValues, reset } = useForm({
+    const { register, errors, handleSubmit, isSubmitting, reset } = useForm({
         resolver: yupResolver(schema),
         shouldUnregister: false,
         defaultValues: {
