@@ -6,6 +6,7 @@ import UserView from '../pages/user-view'
 import NoMatch from '../pages/no-match'
 //components
 import Header from '../layouts/header';
+import Footer from '../layouts/footer';
 import PrivateRoute from '../components/privateRoute'
 
 const RouterComponent = () => {
@@ -18,6 +19,7 @@ const RouterComponent = () => {
                 <PrivateRoute path="/user-view" component={UserView} />
                 <Route exact path="*" component={NoMatch} />
             </Switch>
+            <Footer />
         </div>
     )
 }
