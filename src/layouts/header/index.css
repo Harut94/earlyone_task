@@ -1,0 +1,13 @@
+.header {
+    height: 30px;
+    width: 100%;
+    background: black
+}
+
+.navLink { 
+    color: burlywood
+}
+
+.activeNavLink {
+    color: green !important
+}
