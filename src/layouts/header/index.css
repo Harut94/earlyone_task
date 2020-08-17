@@ -1,13 +1,19 @@
 .header {
-    height: 30px;
     width: 100%;
-    background: black
+    height: 60px;
+    padding: 18px 20px 23px 20px;
+    background: black;
+}
+
+.header a {
+    margin-right: 15px;
+    text-decoration: none;
 }
 
 .navLink { 
-    color: burlywood
+    color: #fff;
 }
 
 .activeNavLink {
-    color: green !important
+    color: #28a745 !important;
 }

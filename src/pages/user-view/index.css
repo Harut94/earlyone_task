@@ -1,0 +1,17 @@
+.user-view-wrapper {
+    display: flex;
+    padding: 40px 50px 40px 50px;
+}
+
+.user-info {
+    width: 220px;
+    padding-left: 20px;
+}
+
+.user-info-item {
+    margin-bottom: 20px;
+}
+
+.user-info-item-inner {
+    font-weight: bold;
+}

@@ -25,12 +25,8 @@ const UserRegister = () => {
         education: yup.string().required('this field is required'),
         image: yup
             .mixed()
-            .required("You need to provide a file")
-            .test("fileSize", "The file is too large", (value) => {
-                return value && value[0].size <= 2000000;
-            })
             .test("type", "We only support jpeg", (value) => {
-                return value && (value[0].type === "image/jpeg" || value[0].type === "image/png");
+                return value && value[0] && (value[0].type === "image/jpeg" || value[0].type === "image/png");
             }),
     });
 
@@ -66,40 +62,46 @@ const UserRegister = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                {console.log(getValues())}
-                <div>
-                    {image ?
-                        <img src={image} alt={'oops'} /> :
+        <div className="user-registration-wrapper">
+            <div className="user-reg-wrapper">
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div>
+                        {image ?
+                            <div className="user-image-wrapper">
+                                <img className="user-image" src={image} alt={'oops'} />
+                            </div> :
+                            <Input
+                                name="image"
+                                title={'Image'}
+                                register={register}
+                                errors={errors}
+                                type="file"
+                                className={'fileUpload'}
+                                handleChange={onImageChange}
+                            />}
                         <Input
-                            name="image"
-                            title={'Image'}
+                            name="name"
+                            title={'Name'}
                             register={register}
                             errors={errors}
-                            type="file"
-                            className={'fileUpload'}
-                            handleChange={onImageChange}
-                        />}
-                    <Input
-                        name="name"
-                        title={'Name'}
-                        register={register}
-                        errors={errors}
-                    />
-                    <Input
-                        name="education"
-                        title={'Education'}
-                        register={register}
-                        errors={errors}
-                    />
-                    <button disabled={isSubmitting}>
-                        Register
-					</button>
-                </div>
-            </form>
+                            className="input-wrapper"
+                        />
+                        <Input
+                            name="education"
+                            title={'Education'}
+                            register={register}
+                            errors={errors}
+                            className="input-wrapper"
+                        />
+                        <button className="reg-button" disabled={isSubmitting}>
+                            Register
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }
+
 
 export default UserRegister
